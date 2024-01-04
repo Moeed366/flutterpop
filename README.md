@@ -1,7 +1,7 @@
 # flutterpop
 <div style="display: flex; justify-content: center; align-items: center;">
     <img width="275" height="550" alt="0 Mobile" src="https://github.com/Moeed366/flutterpop/assets/101408316/2e051766-73c6-4fb3-92c2-99331ae8a2de">
-      <img width="675" alt="1 Web" src="https://github.com/Moeed366/flutterpop/assets/101408316/3eb9396a-aa60-48f1-9fba-9136e0f99e77">
+      <img width="675" alt="1 Web" src="https://github.com/Moeed366/flutterpop/blob/main/ss/web.png?raw=true">
 </div>
 
 
