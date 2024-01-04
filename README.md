@@ -14,7 +14,7 @@ Step 1: Add to pubspec.yaml
 flutter pub add flutterpop
 ```
 
-Step 2: Wrap your `MaterialApp` to `FlareBody`
+Step 2: Wrap your `MaterialApp` to `PopBody`
 
 ```dart
 class MyApp extends StatelessWidget {

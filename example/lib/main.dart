@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopBody(
       child: MaterialApp(
-        title: "Flarenotify Demo",
+        title: "Flutterpop Demo",
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
