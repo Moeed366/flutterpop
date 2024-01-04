@@ -4,7 +4,7 @@
 </div>
 
 <div style="display: flex; justify-content: center; align-items: center;">
-    <img alt="1 Web" src="https://github.com/Moeed366/flarenotify/assets/101408316/97d8d1f2-cbad-4ab9-8c36-70d152fc407ac">
+    <img alt="1 Web" src="https://github.com/Moeed366/flarenotify/assets/101408316/97d8d1f2-cbad-4ab9-8c36-70d152fc407a">
 </div>
 
 ## How to use
