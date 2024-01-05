@@ -34,22 +34,40 @@ class MyApp extends StatelessWidget {
 Step 3: Start using
 
 ```dart
-  void flarenotifyfunction(BuildContext context,
-    {String? title, required String subtitle, required String toastertype}) {
+  void flarenotifyfunction({
+  required BuildContext context,
+  String? title,
+  bool? animate_subtitle,
+  required String subtitle,
+  required PopNotifyStatus toastertype,
+}) {
   final toast = PopModel(
-    height: title == null ? 30 : null,
-    duration: const Duration(seconds: 5),
+    titleColor: toastertype == PopNotifyStatus.success
+        ? Colors.green
+        : (toastertype == PopNotifyStatus.failed ||
+        toastertype == PopNotifyStatus.error)
+        ? Colors.red
+        : (toastertype == PopNotifyStatus.warning)
+        ? Colors.orange
+        : Colors.black,
+    scroll_subtitle: animate_subtitle ?? false,
+    height: subtitle == null ? 20 : 50,
+    subtitlesize: 17,
+    duration: const Duration(seconds: 2),
     title: (title != null && title.isNotEmpty) ? title : null,
     subtitle: (subtitle != null && subtitle.isNotEmpty) ? subtitle : null,
-    status: (toastertype == 'S')
+    status: (toastertype == PopNotifyStatus.success)
         ? PopNotifyStatus.success
-        : (toastertype == 'F')
+        : (toastertype == PopNotifyStatus.failed)
         ? PopNotifyStatus.failed
-        : (toastertype == 'W')
+        : (toastertype == PopNotifyStatus.warning)
         ? PopNotifyStatus.warning
+        : (toastertype == PopNotifyStatus.error)
+        ? PopNotifyStatus.error
         : PopNotifyStatus.info,
-    darkMode: darkMode,
+    darkMode: false,
   );
   PopNotify(context).toast(toast);
 }
 ```
+``` failed, warning, success, info, error  enum added to show prefix icons```

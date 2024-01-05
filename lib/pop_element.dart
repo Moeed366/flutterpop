@@ -183,8 +183,8 @@ class _PopElementState extends State<PopElement> with TickerProviderStateMixin {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        toastTitle(),
-                                        ...toastSubtitle(),
+                                        ...toastTitle(),
+                                        toastSubtitle(),
                                       ],
                                     ),
                                   ),
@@ -240,6 +240,11 @@ class _PopElementState extends State<PopElement> with TickerProviderStateMixin {
               backgroundColor: Colors.blue,
               child: Icon(Icons.info_outline, size: 20, color: Colors.white));
           break;
+        case PopNotifyStatus.error:
+          icon = const CircleAvatar(
+              backgroundColor: Colors.red,
+              child: Icon(Icons.error_outline, size: 20, color: Colors.white));
+          break;
         default:
           break;
       }
@@ -256,58 +261,58 @@ class _PopElementState extends State<PopElement> with TickerProviderStateMixin {
     return [];
   }
 
-  Widget toastTitle() {
+  List<Widget> toastTitle() {
     if (widget.element.title == null) {
-      return Container();
-    }
-    return widget.element.title.runtimeType == String
-        ? Expanded(
-            child: widget.element.animateTitle
-                ? Marquee(
-                    blankSpace: 32,
-                    fadingEdgeStartFraction: 0.05,
-                    fadingEdgeEndFraction: 0.05,
-                    style: TextStyle(
-                      fontSize: widget.element.titlesize ?? 15,
-                      color: widget.element.titleColor ?? defaultTitleColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    text: widget.element.title ?? '',
-                  )
-                : Text(
-                    widget.element.title ?? '',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: widget.element.titlesize ?? 15,
-                      color: widget.element.titleColor ?? defaultTitleColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-          )
-        : widget.element.title;
-  }
-
-  List<Widget> toastSubtitle() {
-    if (widget.element.subtitle == null) {
       return [Container()];
     }
     return [
       FadeTransition(
           opacity: _fadeController.drive(CurveTween(curve: Curves.easeInOut)),
-          child: widget.element.subtitle.runtimeType == String
+          child: widget.element.title.runtimeType == String
               ? Text(
-                  widget.element.subtitle ?? '',
+                  widget.element.title ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontSize: widget.element.subtitlesize ?? 12,
+                      fontSize: widget.element.titlesize ?? 18,
+                      color: widget.element.titleColor ?? defaultTitleColor,
+                      fontWeight: FontWeight.bold),
+                )
+              : widget.element.title),
+    ];
+  }
+
+  Widget toastSubtitle() {
+    if (widget.element.subtitle == null) {
+      return Container();
+    }
+    return widget.element.subtitle.runtimeType == String
+        ? Expanded(
+            child: widget.element.scroll_subtitle
+                ? Marquee(
+                    blankSpace: 32,
+                    fadingEdgeStartFraction: 0.05,
+                    fadingEdgeEndFraction: 0.05,
+                    style: TextStyle(
+                      fontSize: widget.element.subtitlesize ?? 15,
                       color:
                           widget.element.subtitleColor ?? defaultSubtitleColor,
-                      fontWeight: FontWeight.w300),
-                )
-              : widget.element.subtitle),
-      const SizedBox(height: 8)
-    ];
+                      fontWeight: FontWeight.w500,
+                    ),
+                    text: widget.element.subtitle ?? '',
+                  )
+                : Text(
+                    widget.element.subtitle ?? '',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: widget.element.subtitlesize ?? 15,
+                      color:
+                          widget.element.subtitleColor ?? defaultSubtitleColor,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+          )
+        : widget.element.subtitle;
   }
 }

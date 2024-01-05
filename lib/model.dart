@@ -8,7 +8,7 @@ class PopModel {
   BorderRadius? borderRadius;
   bool? darkMode;
   bool? fadeInSubtitle;
-  bool animateTitle;
+  bool scroll_subtitle;
   dynamic title;
   dynamic subtitle;
   double? titlesize;
@@ -37,7 +37,7 @@ class PopModel {
       this.titleColor,
       this.subtitleColor,
       this.fadeInSubtitle,
-      this.animateTitle = true,
+      this.scroll_subtitle = true,
       this.onTap,
       this.onAppear,
       this.onExit,

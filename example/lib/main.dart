@@ -77,14 +77,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 48,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          elevation: 2, primary: Colors.yellowAccent),
+                          elevation: 2, backgroundColor: Colors.yellowAccent),
                       child: const Text('Message',
                           style: TextStyle(color: Colors.teal)),
                       onPressed: () {
-                        flarenotifyfunction(context,
-                            toastertype: 'S',
+                        flarenotifyfunction(
+                            animate_subtitle: true,
+                            toastertype: PopNotifyStatus.info,
                             title: "Welcome Back",
-                            subtitle: 'Good to see you');
+                            subtitle: 'Good to see you',
+                            context: context);
                       },
                     ),
                   ),
@@ -102,21 +104,38 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void flarenotifyfunction(BuildContext context,
-      {String? title, required String subtitle, required String toastertype}) {
+  void flarenotifyfunction({
+    required BuildContext context,
+    String? title,
+    bool? animate_subtitle,
+    required String subtitle,
+    required PopNotifyStatus toastertype,
+  }) {
     final toast = PopModel(
-      height: title == null ? 30 : null,
-      duration: const Duration(seconds: 5),
+      titleColor: toastertype == PopNotifyStatus.success
+          ? Colors.green
+          : (toastertype == PopNotifyStatus.failed ||
+                  toastertype == PopNotifyStatus.error)
+              ? Colors.red
+              : (toastertype == PopNotifyStatus.warning)
+                  ? Colors.orange
+                  : Colors.black,
+      scroll_subtitle: animate_subtitle ?? false,
+      height: subtitle == null ? 20 : 50,
+      subtitlesize: 17,
+      duration: const Duration(seconds: 2),
       title: (title != null && title.isNotEmpty) ? title : null,
       subtitle: (subtitle != null && subtitle.isNotEmpty) ? subtitle : null,
-      status: (toastertype == 'S')
+      status: (toastertype == PopNotifyStatus.success)
           ? PopNotifyStatus.success
-          : (toastertype == 'F')
+          : (toastertype == PopNotifyStatus.failed)
               ? PopNotifyStatus.failed
-              : (toastertype == 'W')
+              : (toastertype == PopNotifyStatus.warning)
                   ? PopNotifyStatus.warning
-                  : PopNotifyStatus.info,
-      darkMode: darkMode,
+                  : (toastertype == PopNotifyStatus.error)
+                      ? PopNotifyStatus.error
+                      : PopNotifyStatus.info,
+      darkMode: false,
     );
     PopNotify(context).toast(toast);
   }

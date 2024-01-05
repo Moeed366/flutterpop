@@ -1,6 +1,6 @@
 name: flutterpop
 description: "FlutterPop: Simplify in-app notifications and popups with ease and customization in your Flutter applications."
-version: 1.0.0
+version: 1.0.2
 homepage: https://github.com/Moeed366/flutterpop
 repository: https://github.com/Moeed366/flutterpop
 environment:

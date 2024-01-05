@@ -1,6 +1,1 @@
-enum PopNotifyStatus {
-  failed,
-  warning,
-  success,
-  info,
-}
+enum PopNotifyStatus { failed, warning, success, info, error }
