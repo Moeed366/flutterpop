@@ -1,4 +1,4 @@
-# flutterpop
+# Flutterpop
 <div style="display: flex; justify-content: center; align-items: center;">
     <img width="275" height="520" alt="0 Mobile" src="https://github.com/Moeed366/flutterpop/blob/main/ss/mobile.png?raw=true">
       <img width="675" alt="1 Web" src="https://github.com/Moeed366/flutterpop/blob/main/ss/web.png?raw=true">
